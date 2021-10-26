@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tipe_komunitas">
+        <item>Seni Rupa</item>
+        <item>Seni Tari</item>
+        <item>Seni Musik</item>
+        <item>Seni Drama</item>
+        <item>Seni Lukis</item>
+        <item>Seni Lokal</item>
+    </string-array>
+</resources>

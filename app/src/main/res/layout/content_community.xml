@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="24dp"
+    android:layout_marginTop="56dp"
+    android:layout_marginRight="24dp"
+    android:layout_marginBottom="24dp"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
+    android:paddingBottom="12dp"
+    tools:context=".ui.CommunityActivity"
+    tools:showIn="@layout/activity_community">
+
+    <TextView
+        android:id="@+id/teks_komunitas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Komunitas"
+        android:textColor="#ffffff"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_menu_komunitas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/teks_komunitas"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="#615da0"
+        app:tabTextColor="#c0392b" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager_menu_komunitas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tab_menu_komunitas" />
+
+</RelativeLayout>

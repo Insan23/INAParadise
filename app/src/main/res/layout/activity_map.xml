@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MapActivity">
+
+    <ImageView
+        android:id="@+id/bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        app:srcCompat="@drawable/bg_peta_indonesia" />
+
+    <ImageView
+        android:id="@+id/sumatera"
+        android:layout_width="165dp"
+        android:layout_height="132dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="74dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/pulau_sumatra" />
+
+    <ImageView
+        android:id="@+id/jawa"
+        android:layout_width="133dp"
+        android:layout_height="66dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="160dp"
+        android:layout_marginBottom="87dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/pulau_jawa" />
+
+    <ImageView
+        android:id="@+id/kalimantan"
+        android:layout_width="126dp"
+        android:layout_height="118dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="208dp"
+        android:layout_marginTop="78dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/pulau_kalimantan" />
+
+    <ImageView
+        android:id="@+id/maluku"
+        android:layout_width="60dp"
+        android:layout_height="72dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="113dp"
+        android:layout_marginEnd="164dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/pulau_maluku" />
+
+    <ImageView
+        android:id="@+id/papua"
+        android:layout_width="129dp"
+        android:layout_height="101dp"
+        android:layout_below="@+id/sumatera"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-69dp"
+        android:layout_marginEnd="45dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/pulau_papua" />
+
+    <ImageView
+        android:id="@+id/nusa"
+        android:layout_width="137dp"
+        android:layout_height="24dp"
+        android:layout_alignTop="@+id/sumatera"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="142dp"
+        android:layout_marginEnd="177dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/pulau_nusatenggara" />
+
+    <ImageView
+        android:id="@+id/sulawesi"
+        android:layout_width="83dp"
+        android:layout_height="92dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="98dp"
+        android:layout_marginEnd="215dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/pulau_sulawesi" />
+
+    <ImageView
+        android:id="@+id/full"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/jawa"
+        android:layout_alignParentStart="true"
+        app:srcCompat="@drawable/peta_indonesia" />
+
+</RelativeLayout>

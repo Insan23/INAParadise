@@ -1,70 +1,47 @@
-package id.ac.unej.inaparadise.adapter;
+package id.ac.unej.inaparadise.adapter
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.support.v7.widget.RecyclerView
+import android.view.ViewGroup
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.ImageView
+import id.ac.unej.inaparadise.R
+import android.widget.TextView
+import id.ac.unej.inaparadise.model.Chat
+import id.ac.unej.inaparadise.model.DaftarFeed
 
-import java.util.List;
-
-import id.ac.unej.inaparadise.R;
-import id.ac.unej.inaparadise.model.DaftarFeed;
-
-
-public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ViewHolder> {
-
-    List<DaftarFeed> daftarFeed;
-    private OnItemClickListener listener;
-
-    public FeedAdapter(List<DaftarFeed> daftarFeed, OnItemClickListener listener) {
-        this.daftarFeed = daftarFeed;
-        this.listener = listener;
+class FeedAdapter(var daftarFeed: List<DaftarFeed>, private val listener: OnItemClickListener) :
+    RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.list_item_feed, parent, false)
+        return ViewHolder(view)
     }
 
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_feed, parent, false);
-        return new ViewHolder(view);
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(daftarFeed[position], listener)
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.bind(daftarFeed.get(position), listener);
+    override fun getItemCount(): Int {
+        return daftarFeed.size
     }
 
-    @Override
-    public int getItemCount() {
-        return daftarFeed.size();
+    interface OnItemClickListener {
+        fun onItemClick(model: DaftarFeed?)
     }
 
-    public interface OnItemClickListener {
-        void onItemClick(DaftarFeed model);
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
-
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //        private TextView namaBarang, deskripsiBarang;
-//        private ImageView fotoBarang;
-        private ImageView fotoProfil, foto;
-        private TextView nama, waktu;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            fotoProfil = itemView.findViewById(R.id.foto_profil);
-            foto = itemView.findViewById(R.id.foto_feed);
-            nama = itemView.findViewById(R.id.nama);
-            waktu = itemView.findViewById(R.id.waktu);
-        }
-
-        public void bind(final DaftarFeed model, final OnItemClickListener listener) {
-            fotoProfil.setImageResource(model.getFotoUploader());
-            foto.setImageResource(model.getFoto());
-            nama.setText(model.getUploader());
-            waktu.setText(model.getWaktu() + "jam ");
+        //        private ImageView fotoBarang;
+        private val fotoProfil: ImageView
+        private val foto: ImageView
+        private val nama: TextView
+        private val waktu: TextView
+        fun bind(model: DaftarFeed, listener: OnItemClickListener) {
+            fotoProfil.setImageResource(model.fotoUploader)
+            foto.setImageResource(model.foto)
+            nama.text = model.uploader
+            waktu.text = model.waktu.toString() + "jam "
 
 //            StorageReference ref = FirebaseStorage.getInstance().getReferenceFromUrl(model.getUrlFotoBarang());
 //            ref.getBytes(MB).addOnCompleteListener(new OnCompleteListener<byte[]>() {
@@ -80,13 +57,14 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ViewHolder> {
 //                    }
 //                }
 //            });
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onItemClick(model);
-                }
-            });
+            itemView.setOnClickListener { listener.onItemClick(model) }
         }
 
+        init {
+            fotoProfil = itemView.findViewById(R.id.foto_profil)
+            foto = itemView.findViewById(R.id.foto_feed)
+            nama = itemView.findViewById(R.id.nama)
+            waktu = itemView.findViewById(R.id.waktu)
+        }
     }
 }

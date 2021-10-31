@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/foto_profil"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_person" />
+
+    <TextView
+        android:id="@+id/nama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@id/foto_profil"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:text="Nama Kontak" />
+
+    <TextView
+        android:id="@+id/preview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nama"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@id/foto_profil"
+        android:maxLines="1"
+        tools:text="Ringkasan Pesan" />
+
+
+</RelativeLayout>

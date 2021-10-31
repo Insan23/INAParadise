@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp">
+
+        <TextView
+            android:id="@+id/judul_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Isi Identitas Komunitas Anda"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/teks_tipe_komunitas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/judul_dialog"
+            android:layout_marginTop="16dp"
+            android:text="Pilih Komunitas"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/tipe_komunitas"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_below="@id/teks_tipe_komunitas"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/bg_round_outline"
+            android:padding="8dp" />
+
+        <TextView
+            android:id="@+id/teks_nama_komunitas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tipe_komunitas"
+            android:layout_marginTop="16dp"
+            android:text="Nama Komunitas"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/nama_komunitas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/teks_nama_komunitas"
+            android:background="@drawable/bg_round_outline"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:textSize="24sp"
+            tools:text="askdjnfksjdnkf"
+            android:padding="8dp"/>
+
+        <TextView
+            android:id="@+id/teks_anggota_komunitas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nama_komunitas"
+            android:layout_marginTop="16dp"
+            android:text="Anggota Komunitas"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/anggota_komunitas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/teks_anggota_komunitas"
+            android:background="@drawable/bg_round_outline"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:textSize="24sp"
+            tools:text="askdjnfksjdnkf"
+            android:padding="8dp"/>
+
+        <ImageView
+            android:id="@+id/selesai"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/icon_sukses"
+            android:layout_below="@id/anggota_komunitas"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"/>
+
+    </RelativeLayout>
+
+</FrameLayout>

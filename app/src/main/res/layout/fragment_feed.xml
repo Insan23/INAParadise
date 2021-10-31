@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/layout_judul"
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:background="@drawable/bg_upload"
+        android:elevation="4dp">
+
+        <ImageView
+            android:id="@+id/kembali"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_before"
+            android:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/teks_feed_deskripsi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Posting karya terbaikmu, temukan inspirasimu"
+            android:textColor="#fff"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/teks_feed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/teks_feed_deskripsi"
+            android:layout_marginLeft="16dp"
+            android:text="Umpan Karya"
+            android:textColor="#fff"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/umpan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_judul"
+        android:layout_margin="16dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>

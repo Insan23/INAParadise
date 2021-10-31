@@ -1,60 +1,62 @@
-package id.ac.unej.inaparadise.fragment;
+package id.ac.unej.inaparadise.fragment
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v4.app.Fragment
+import android.view.View
+import id.ac.unej.inaparadise.adapter.DaftarNotifikasiAdapter
+import id.ac.unej.inaparadise.model.DaftarNotifikasi
+import java.util.ArrayList
 
-import java.util.ArrayList;
-import java.util.List;
-
-import id.ac.unej.inaparadise.R;
-import id.ac.unej.inaparadise.adapter.DaftarNotifikasiAdapter;
-import id.ac.unej.inaparadise.model.DaftarNotifikasi;
-import id.ac.unej.inaparadise.ui.ChatActivity;
-
-public class Notifikasi extends Fragment {
-
-    List<DaftarNotifikasi> daftarNotifikasi;
-
-    public Notifikasi() {
-
+class Notifikasi : Fragment() {
+    var daftarNotifikasi: MutableList<DaftarNotifikasi>? = null
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val root: View = inflater.inflate(R.layout.fragment_notifikasi, container, false)
+        val notifikasi: RecyclerView = root.findViewById(R.id.daftar_notifikasi)
+        daftarNotifikasi = ArrayList<DaftarNotifikasi>()
+        val adapter = DaftarNotifikasiAdapter(
+            daftarNotifikasi,
+            object : DaftarNotifikasiAdapter.OnItemClickListener {
+                override fun onItemClick(model: DaftarNotifikasi) {
+                    val chat = Intent(activity, ChatActivity::class.java)
+                    chat.putExtra("nama", model.getNama())
+                    startActivity(chat)
+                }
+            })
+        populate()
+        notifikasi.setLayoutManager(LinearLayoutManager(activity))
+        notifikasi.setAdapter(adapter)
+        adapter.notifyDataSetChanged()
+        return root
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_notifikasi, container, false);
-
-        RecyclerView notifikasi = root.findViewById(R.id.daftar_notifikasi);
-        daftarNotifikasi = new ArrayList<>();
-        DaftarNotifikasiAdapter adapter = new DaftarNotifikasiAdapter(daftarNotifikasi, new DaftarNotifikasiAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(DaftarNotifikasi model) {
-                Intent chat = new Intent(getActivity(), ChatActivity.class);
-                chat.putExtra("nama", model.getNama());
-                startActivity(chat);
-            }
-        });
-
-        populate();
-        notifikasi.setLayoutManager(new LinearLayoutManager(getActivity()));
-        notifikasi.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-
-        return root;
-    }
-
-    void populate() {
+    fun populate() {
         //String nama, String isi, long waktu, int foto
-        daftarNotifikasi.add(new DaftarNotifikasi("Ludfi Ika P", "Hari ini mau gathering dimana?", 2, R.drawable.profil_2));
-        daftarNotifikasi.add(new DaftarNotifikasi("Erinda", "Ada pagelaran di kota", 6, R.drawable.profil_3));
-        daftarNotifikasi.add(new DaftarNotifikasi("Aleq", "Saya punya solusi untuk itu", 10, R.drawable.profil_1));
+        daftarNotifikasi!!.add(
+            DaftarNotifikasi(
+                "Ludfi Ika P",
+                "Hari ini mau gathering dimana?",
+                2,
+                R.drawable.profil_2
+            )
+        )
+        daftarNotifikasi!!.add(
+            DaftarNotifikasi(
+                "Erinda",
+                "Ada pagelaran di kota",
+                6,
+                R.drawable.profil_3
+            )
+        )
+        daftarNotifikasi!!.add(
+            DaftarNotifikasi(
+                "Aleq",
+                "Saya punya solusi untuk itu",
+                10,
+                R.drawable.profil_1
+            )
+        )
     }
 }

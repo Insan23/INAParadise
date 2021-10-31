@@ -1,43 +1,40 @@
-package id.ac.unej.inaparadise.fragment;
+package id.ac.unej.inaparadise.fragment
 
-import android.content.DialogInterface;
-import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentTransaction;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.Spinner;
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.os.Bundle
+import id.ac.unej.inaparadise.R
+import android.widget.ArrayAdapter
+import id.ac.unej.inaparadise.model.DaftarFeed
+import android.support.v7.widget.RecyclerView
+import id.ac.unej.inaparadise.adapter.FeedAdapter
+import android.support.v7.widget.LinearLayoutManager
+import id.ac.unej.inaparadise.adapter.DaftarNotifikasiAdapter
+import android.content.Intent
+import android.support.v4.app.DialogFragment
+import android.view.View
+import android.widget.GridView
+import id.ac.unej.inaparadise.adapter.GridViewAdapter
+import android.widget.AdapterView
+import android.widget.Spinner
+import id.ac.unej.inaparadise.adapter.AdapterDaftarPesan
 
-import id.ac.unej.inaparadise.R;
-
-public class DialogBuatKomunitas extends DialogFragment {
-
-    public DialogBuatKomunitas() {
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+class DialogBuatKomunitas : DialogFragment() {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_dialog_buat_komunitas, container, false);
-
-        Spinner spinner = view.findViewById(R.id.tipe_komunitas);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.tipe_komunitas, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
-        view.findViewById(R.id.selesai).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
-
-        return view;
+        val view: View = inflater.inflate(R.layout.fragment_dialog_buat_komunitas, container, false)
+        val spinner = view.findViewById<Spinner>(R.id.tipe_komunitas)
+        val adapter = ArrayAdapter.createFromResource(
+            context,
+            R.array.tipe_komunitas,
+            android.R.layout.simple_spinner_item
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+        view.findViewById<View>(R.id.selesai).setOnClickListener { dismiss() }
+        return view
     }
 }

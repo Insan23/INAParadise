@@ -1,40 +1,34 @@
-package id.ac.unej.inaparadise.adapter;
+package id.ac.unej.inaparadise.adapter
 
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentPagerAdapter
+import android.support.v4.view.PagerAdapter
+import id.ac.unej.inaparadise.R
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.widget.RelativeLayout
+import android.widget.TextView
+import android.widget.BaseAdapter
+import java.util.ArrayList
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class TabAdapter extends FragmentPagerAdapter {
-
-    private final List<Fragment> fragmentList = new ArrayList<>();
-    private final List<String> fragmentListTitle = new ArrayList<>();
-
-    public TabAdapter(FragmentManager fm) {
-        super(fm);
+class TabAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
+    private val fragmentList: MutableList<Fragment> = ArrayList()
+    private val fragmentListTitle: MutableList<String> = ArrayList()
+    override fun getItem(position: Int): Fragment {
+        return fragmentList[position]
     }
 
-    @Override
-    public Fragment getItem(int position) {
-        return fragmentList.get(position);
+    override fun getPageTitle(position: Int): CharSequence? {
+        return fragmentListTitle[position]
     }
 
-    @Nullable
-    @Override
-    public CharSequence getPageTitle(int position) {
-        return (CharSequence) fragmentListTitle.get(position);
+    override fun getCount(): Int {
+        return fragmentListTitle.size
     }
 
-    @Override
-    public int getCount() {
-        return fragmentListTitle.size();
-    }
-
-    public void addFragment(Fragment fragment, String title) {
-        fragmentList.add(fragment);
-        fragmentListTitle.add(title);
+    fun addFragment(fragment: Fragment, title: String) {
+        fragmentList.add(fragment)
+        fragmentListTitle.add(title)
     }
 }

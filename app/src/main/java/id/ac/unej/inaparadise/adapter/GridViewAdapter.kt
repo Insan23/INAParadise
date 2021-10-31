@@ -1,52 +1,50 @@
-package id.ac.unej.inaparadise.adapter;
+package id.ac.unej.inaparadise.adapter
 
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
+import android.content.Context
+import android.support.v4.app.FragmentPagerAdapter
+import android.support.v4.view.PagerAdapter
+import id.ac.unej.inaparadise.R
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.RelativeLayout
+import android.widget.TextView
+import android.widget.BaseAdapter
+import android.widget.ImageView
 
-import id.ac.unej.inaparadise.R;
-
-public class GridViewAdapter extends BaseAdapter {
-    private Context mContext;
+class GridViewAdapter(private val mContext: Context) : BaseAdapter() {
     // references to our images
-    private Integer[] mThumbIds = {
-            R.drawable.ic_tarian, R.drawable.ic_makanan,
-            R.drawable.ic_senjata, R.drawable.ic_rumah,
-            R.drawable.ic_alat_musik, R.drawable.ic_pakaian
-    };
+    private val mThumbIds = arrayOf(
+        R.drawable.ic_tarian, R.drawable.ic_makanan,
+        R.drawable.ic_senjata, R.drawable.ic_rumah,
+        R.drawable.ic_alat_musik, R.drawable.ic_pakaian
+    )
 
-    public GridViewAdapter(Context context) {
-        mContext = context;
+    override fun getCount(): Int {
+        return mThumbIds.size
     }
 
-    public int getCount() {
-        return mThumbIds.length;
+    override fun getItem(position: Int): Any {
+        return null
     }
 
-    public Object getItem(int position) {
-        return null;
-    }
-
-    public long getItemId(int position) {
-        return 0;
+    override fun getItemId(position: Int): Long {
+        return 0
     }
 
     // create a new ImageView for each item referenced by the Adapter
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ImageView imageView;
+    override fun getView(position: Int, convertView: View, parent: ViewGroup): View {
+        val imageView: ImageView
         if (convertView == null) {
             // if it's not recycled, initialize some attributes
-            imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new ViewGroup.LayoutParams(parent.getWidth() / 2, parent.getWidth() / 2));
-            imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            imageView.setPadding(8, 8, 8, 8);
+            imageView = ImageView(mContext)
+            imageView.layoutParams = ViewGroup.LayoutParams(parent.width / 2, parent.width / 2)
+            imageView.scaleType = ImageView.ScaleType.FIT_CENTER
+            imageView.setPadding(8, 8, 8, 8)
         } else {
-            imageView = (ImageView) convertView;
+            imageView = convertView as ImageView
         }
-
-        imageView.setImageResource(mThumbIds[position]);
-        return imageView;
+        imageView.setImageResource(mThumbIds[position])
+        return imageView
     }
 }
